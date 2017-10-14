@@ -24,6 +24,7 @@ public class TestarApolice {
 		ta.apresentarApolices(listaApolice);
 	}
 	
+	@SuppressWarnings("resource")
 	public List<Apolice> carregarApolices() {
 		List<Apolice> apolices = new ArrayList<>();
 		Scanner entrada;
@@ -48,8 +49,6 @@ public class TestarApolice {
 			
 			apolices.add(apolice);
 		}
-
-		entrada.close();
 		
 		return apolices;
 	}
@@ -59,8 +58,10 @@ public class TestarApolice {
 		Scanner entrada;
 		
 		entrada = new Scanner(System.in);
-		System.out.print("Informe o percentual de atualização do valor segurado: ");
+		entrada.reset();
+		System.out.print("Informe o percentual de atualizacao do valor segurado: ");
 		percentualAtualizacao = Float.parseFloat(entrada.nextLine());
+		
 		entrada.close();
 		
 		return percentualAtualizacao;
@@ -76,7 +77,7 @@ public class TestarApolice {
 		ListIterator<Apolice> iterator = listaApolices.listIterator();
 		while (iterator.hasNext()) {
 			Apolice ap = iterator.next();
-			System.out.println("Apolice:  " + ap.toString());
+			System.out.println("Apolice:  " + ap.toString() +"\n");
 		}
 	}
 	
